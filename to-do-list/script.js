@@ -4,6 +4,10 @@ const task = document.querySelector("#texxt");
 let update = null;
 
 AddBtn.addEventListener("click", () => {
+  let saved = localStorage.getItem("key)
+  if(saved){
+    ule.innerHtml = saved
+  }
   if (task.value.trim() === "") return;
   if (update) {
     update.textContent = task.value;
@@ -22,12 +26,14 @@ AddBtn.addEventListener("click", () => {
           </div>
         </div>`;
   }
+  localStorage.setItem("key",ule.innerHTML)
   task.value = "";
 });
 
 ule.addEventListener("click", (e) => {
   if (e.target.classList.contains("del")) {
     e.target.closest(".task-div").remove();
+    localStorage.setItem("key", ule.innerHTML)
   }
 
   if (e.target.classList.contains("edit")) {
@@ -43,3 +49,4 @@ ule.addEventListener("click", (e) => {
     lis.classList.toggle("completed");
   }
 });
+
